@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {setToken, getToken, setUserInfo, getUserInfo} from "../utlis/auth"
-import {login,userInfoo} from '../api/colllect'
+import {login,userInfoo,logout} from '../api/colllect'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -28,6 +28,30 @@ export default new Vuex.Store({
     }
   },
   actions: {
+async handleUserInfo({commit}){
+  try{
+  const response=await userInfoo();
+  commit('SET_USER_INFO',response)
+  return response
+  }catch(e){
+    console.log(e.message);
+  }
+},
+
+
+
+    async removelogin({commit}){
+      try{
+         const ss= await logout();
+         commit('SET_USER_INFO','');
+         commit("SET_TOKEN",'');
+         return ss
+      }catch (e){
+        console.log(e.message);
+      }
+    },
+
+
     async handleUserInfo({commit}){
       try{
        const userInfo= await userInfoo();

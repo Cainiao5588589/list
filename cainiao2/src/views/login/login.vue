@@ -63,7 +63,7 @@ export default {
           message: "登录成功",
           duration: 2000,
         });
-        this.$router.push("/Home");
+        this.$router.push("/");
       } catch (e) {
         console.log(e, "e");
       }

@@ -27,3 +27,18 @@ export const userInfoo = () => {
       method : "GET"
     })
   }
+
+
+
+
+  /**
+ * 退出登录接口
+ * @returns {AxiosPromise}
+ */
+export const logout = () => {
+  return request({
+    url : "/admin/logout",
+    method : "POST"
+  })
+}
+
